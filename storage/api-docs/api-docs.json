@@ -1,0 +1,257 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "my doc Api",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/requests/register": {
+            "post": {
+                "tags": [
+                    "application"
+                ],
+                "summary": "Регистрация пользователя",
+                "operationId": "bd8de595140468611b681320839f8a27",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "den"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "den@test.com"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "123456"
+                                            },
+                                            "password_confirmation": {
+                                                "type": "string",
+                                                "example": "123456"
+                                            },
+                                            "role": {
+                                                "type": "string",
+                                                "example": "manager"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIzIiwianRpIjoiNGE4MjYyY2Y5MWIwOGYyZGY5Y..."
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Successfully created user!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/requests/": {
+            "get": {
+                "tags": [
+                    "application"
+                ],
+                "summary": "Оставляем заявку",
+                "operationId": "28875428dca971d8137bc149f4187049",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "inteher",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "deb"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "den@mail.com"
+                                        },
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Resolved"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "test"
+                                        },
+                                        "comments": {
+                                            "type": "string",
+                                            "example": "test"
+                                        },
+                                        "user_id": {
+                                            "type": "string",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "format": "date-time",
+                                            "example": "2023-08-29T15:37:29.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "format": "date-time",
+                                            "example": "2023-08-30T13:32:33.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "application"
+                ],
+                "summary": "Оставляем заявку",
+                "operationId": "2a9d35162503bd2d706f42889bf1544c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "message": {
+                                                "type": "string",
+                                                "example": "hello"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "application successfully sent for processing"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/requests/{id}": {
+            "put": {
+                "tags": [
+                    "application"
+                ],
+                "summary": "ответ на конкретную задачу ответственным лицом",
+                "operationId": "4cbcffd6945b70dddb9e2e3e7f0740e4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id apllication",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "comments": {
+                                                "type": "string",
+                                                "example": "test"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Application response sent successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
